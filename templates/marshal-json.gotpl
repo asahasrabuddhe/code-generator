@@ -1,0 +1,16 @@
+package {{ .PackageName }}
+
+import (
+    "encoding/json"
+    "errors"
+)
+
+func ({{ .ObjectName }} {{ printReceiver .ObjectType .PointerReceiver }}) MarshalJSON() ([]byte, error) {
+    // TODO - write validations
+    bytes, err := json.Marshal({{ .ObjectName }})
+    if err != nil {
+        return nil, errors.New("error in marshaling")
+    }
+
+    return bytes, nil
+}
